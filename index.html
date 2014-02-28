@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="cytoscapeSample">
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/cytoscape.css">
+
+    <meta charset="utf-8">
+
+
+</head>
+<body>
+
+  <!-- Livereload script for development only (stripped during dist build) -->
+<!--  <script src="http://localhost:35729/livereload.js" data-build="exclude"></script>-->
+
+
+
+
+  <div>
+    <div id="content" class="container" ng-controller="CytoscapeCtrl">
+      <div >
+          <button ng-click="reset()">Reset nodes</button>
+            ||||
+           Node
+          <select ng-model="form.obj.objTypes" ng-options="name for name in objTypes"></select>
+          <input ng-model="form.obj.name"/><button ng-click="addObj()">Add node</button>
+
+          &nbsp&nbsp&nbsp&nbsp&nbsp
+
+          <span ng-hide="mapData.length>1">
+              After adding 2 nodes, you can start adding connecting edges
+          </span>
+          <span ng-show="mapData.length>1">
+        Edge (between 2 nodes)
+          <select ng-model="formEdges.fromName" ng-options="c.name for c in mapData">
+              <option value=""> From >> </option>
+          </select>
+          <select ng-model="formEdges.toName" ng-options="c.name for c in mapData">
+              <option value="">  To >> </option>
+          </select>
+            <button ng-click="addEdge()">Add edge</button>
+              </span>
+          <hr>
+        <cytoscape cy-data="mapData" cy-edges="edgeData" cy-click="doClick(value)"></cytoscape>
+
+          <br>
+          <div>
+              This is a sample of the <a href="">Cytoscape directive</a>.
+              add Nodes then create connections between them with Edges.<br>
+
+          </div>
+      </div>
+    </div>
+  </div>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+  <script src="js/app.js"></script>
+  <script src="js/cytoscapeDirective.js"></script>
+  <script src="js/cytoscapeCtrl.js"></script>
+  <script src="//cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js"></script>
+
+</body>
+</html>
