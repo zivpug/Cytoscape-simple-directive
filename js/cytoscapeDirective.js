@@ -61,19 +61,19 @@ angular.module('cytoscapeSample').directive('cytoscape', function($rootScope) {
                 for (i=0; i<scope.cyData.length; i++)
                 {
                     // get id, name and type  from the object
-                    var Oid = scope.cyData[i].id;
-                    var Oname = scope.cyData[i].name;
-                    var Otype = scope.cyData[i].type;
+                    var dId = scope.cyData[i].id;
+                    var dName = scope.cyData[i].name;
+                    var dType = scope.cyData[i].type;
                     // get color from the object-color dictionary
                     var typeColor = scope.typeColors[Otype];
                     // build the object, add or change properties as you need - just have a name and id
                     var elementObj = {
-                        group:Otype,'data':{
-                            id:Oid,
-                            name:Oname,
+                        group:dType,'data':{
+                            id:dId,
+                            name:dName,
                             typeColor:typeColor,
-                            typeShape:Otype,
-                            type:Otype
+                            typeShape:dType,
+                            type:dType
                     }};
                     // add new object to the Nodes array
                     scope.elements.nodes.push(elementObj);
